@@ -1,6 +1,7 @@
 # ZonelessCalculator
+Proyecto usando [Angular CLI](https://github.com/angular/angular-cli) version 21.2.5.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.5.
+Se añadió tailwindcss siguiendo los [pasos oficiales](https://tailwindcss.com/docs/installation/framework-guides/angular)
 
 ## Development server
 
