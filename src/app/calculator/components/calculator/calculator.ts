@@ -1,5 +1,6 @@
-import { Component, viewChildren } from '@angular/core';
+import { Component, computed, inject, viewChildren } from '@angular/core';
 import { CalculatorButton } from '../calculator-button/calculator-button';
+import { CalculatorService } from '@/calculator/services/calculator';
 
 @Component({
   selector: 'calculator',
@@ -14,9 +15,14 @@ import { CalculatorButton } from '../calculator-button/calculator-button';
 export class Calculator {
 
   public calculatorButtons = viewChildren(CalculatorButton);
+  private calculatorSvc = inject(CalculatorService);
 
-  handleClick(event: string) {
-    console.log('Button clicked:', {event});
+  resultText = computed(() => this.calculatorSvc.resultText());
+  subResultText = computed(() => this.calculatorSvc.subResultText());
+  lastOperator = computed(() => this.calculatorSvc.lastOperator());
+
+  handleClick(key: string) {
+    this.calculatorSvc.constructNumber(key);
   }
 
    handleKeyboardEvent(event: KeyboardEvent) {
