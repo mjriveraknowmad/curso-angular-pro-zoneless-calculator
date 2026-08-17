@@ -5,6 +5,7 @@ import { CalculatorService } from './calculator';
 describe('Calculator', () => {
   let service: CalculatorService;
 
+  // Antes de cada prueba, configuramos el TestBed y obtenemos una instancia del servicio, para no mezclar el estado entre pruebas.
   beforeEach(() => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(CalculatorService);
@@ -21,11 +22,19 @@ describe('Calculator', () => {
   });
 
   it('should set resultText, subResultText to "0" when C is pressed', () => {
-    // todo:
+    service.constructNumber('5');
+    console.log('resultText after 5:', service.resultText());
+    service.constructNumber('C');
+    console.log('resultText after C:', service.resultText());
+    expect(service.resultText()).toBe('0');
+    expect(service.subResultText()).toBe('0');
   });
 
   it('should update resultText with number input', () => {
-    // todo:
+    service.constructNumber('1');
+    service.constructNumber('2');
+    service.constructNumber('3');
+    expect(service.resultText()).toBe('123');
   });
 
   it('should handle operators correctly', () => {
