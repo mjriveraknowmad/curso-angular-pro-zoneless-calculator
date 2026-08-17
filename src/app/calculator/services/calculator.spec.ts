@@ -102,14 +102,26 @@ describe('Calculator', () => {
 
   it('should handle sign change +/-', () => {
     // todo:
+    service.constructNumber('5');
+    service.constructNumber('+/-');
+    expect(service.resultText()).toBe('-5');
   });
 
   it('should handle backspace', () => {
     // todo:
+    service.constructNumber('1');
+    service.constructNumber('2');
+    service.constructNumber('3');
+    service.constructNumber('Backspace');
+    expect(service.resultText()).toBe('12');
   });
 
   it('should handle backspace with negative numbers', () => {
     // todo:
+    service.constructNumber('5');
+    service.constructNumber('+/-');
+    service.constructNumber('Backspace');
+    expect(service.resultText()).toBe('0');
   });
 
   it('should handle max length', () => {
