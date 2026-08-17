@@ -125,11 +125,23 @@ describe('Calculator', () => {
   });
 
   it('should handle max length', () => {
-    // todo:
+    service.constructNumber('1');
+    service.constructNumber('2');
+    service.constructNumber('3');
+    service.constructNumber('4');
+    service.constructNumber('5');
+    service.constructNumber('6');
+    service.constructNumber('7');
+    service.constructNumber('8');
+    service.constructNumber('9');
+    service.constructNumber('0');
+    service.constructNumber('1'); // This should be ignored
+    expect(service.resultText()).toBe('1234567890');
   });
 
   it('should handle invalid input', () => {
-    // todo:
+    service.constructNumber('A'); // Invalid input
+    expect(service.resultText()).toBe('0'); // Should remain unchanged
   });
 
   it('should handle negative zero input correctly', () => {
