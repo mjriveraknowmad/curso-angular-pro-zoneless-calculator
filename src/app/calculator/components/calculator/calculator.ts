@@ -10,4 +10,9 @@ import { CalculatorButton } from '../calculator-button/calculator-button';
     class: 'max-w-96 overflow-hidden block',
   },
 })
-export class Calculator {}
+export class Calculator {
+
+  handleButtonClick(event: string) {
+    console.log('Button clicked:', event);
+  }
+}

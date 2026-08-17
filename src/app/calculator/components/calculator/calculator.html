@@ -10,34 +10,34 @@
 </div>
 <div class="bg-gradient-to-b from-indigo-400 to-indigo-500">
   <div class="flex w-full">
-    <calculator-button> C </calculator-button>
-    <calculator-button> +/- </calculator-button>
-    <calculator-button> % </calculator-button>
-    <calculator-button isCommand> ÷ </calculator-button>
+    <calculator-button (onClick)="handleButtonClick($event)"> C </calculator-button>
+    <calculator-button (onClick)="handleButtonClick($event)"> +/- </calculator-button>
+    <calculator-button (onClick)="handleButtonClick($event)"> % </calculator-button>
+    <calculator-button isCommand (onClick)="handleButtonClick($event)"> ÷ </calculator-button>
   </div>
 
   <div class="flex w-full">
-    <calculator-button>7</calculator-button>
-    <calculator-button>8</calculator-button>
-    <calculator-button>9</calculator-button>
-    <calculator-button isCommand>x</calculator-button>
+    <calculator-button (onClick)="handleButtonClick($event)">7</calculator-button>
+    <calculator-button (onClick)="handleButtonClick($event)">8</calculator-button>
+    <calculator-button (onClick)="handleButtonClick($event)">9</calculator-button>
+    <calculator-button isCommand (onClick)="handleButtonClick($event)">x</calculator-button>
   </div>
   <div class="flex w-full">
-    <calculator-button>4</calculator-button>
-    <calculator-button>5</calculator-button>
-    <calculator-button>6</calculator-button>
-    <calculator-button isCommand>-</calculator-button>
+    <calculator-button (onClick)="handleButtonClick($event)">4</calculator-button>
+    <calculator-button (onClick)="handleButtonClick($event)">5</calculator-button>
+    <calculator-button (onClick)="handleButtonClick($event)">6</calculator-button>
+    <calculator-button isCommand (onClick)="handleButtonClick($event)">-</calculator-button>
   </div>
   <div class="flex w-full">
-    <calculator-button>1</calculator-button>
-    <calculator-button>2</calculator-button>
-    <calculator-button>3</calculator-button>
-    <calculator-button isCommand>+</calculator-button>
+    <calculator-button (onClick)="handleButtonClick($event)">1</calculator-button>
+    <calculator-button (onClick)="handleButtonClick($event)">2</calculator-button>
+    <calculator-button (onClick)="handleButtonClick($event)">3</calculator-button>
+    <calculator-button isCommand (onClick)="handleButtonClick($event)">+</calculator-button>
   </div>
   <div class="flex w-full">
-    <calculator-button>0</calculator-button>
-    <calculator-button>.</calculator-button>
+    <calculator-button (onClick)="handleButtonClick($event)">0</calculator-button>
+    <calculator-button (onClick)="handleButtonClick($event)">.</calculator-button>
 
-    <calculator-button isCommand isDoubleSize> = </calculator-button>
+    <calculator-button isCommand isDoubleSize (onClick)="handleButtonClick($event)"> = </calculator-button>
   </div>
 </div>
