@@ -38,7 +38,19 @@ describe('Calculator', () => {
   });
 
   it('should handle operators correctly', () => {
-    // todo:
+    const operators = ['+', '-', '*', '/', '÷'];
+
+    // service.constructNumber('123');
+    // service.constructNumber('-');
+    // expect(service.resultText()).toBe('0');
+    // expect(service.lastOperator()).toBe('-');
+
+    for (const operator of operators) {
+      service.constructNumber('123');
+      service.constructNumber(operator);
+      expect(service.resultText()).toBe('0');
+      expect(service.lastOperator()).toBe(operator);
+    }
   });
 
   it('should calculate result correctly for addition', () => {
