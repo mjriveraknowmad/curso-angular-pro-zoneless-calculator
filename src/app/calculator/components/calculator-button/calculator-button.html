@@ -2,8 +2,6 @@
 <button
   (click)="handleClick()"
   #button
-  [class.bg-indigo-700]="isCommand()"
-  [class.bg-opacity-20]="isCommand()"
   class="w-full h-16 outline-none focus:outline-none hover:bg-indigo-700 hover:bg-opacity-20 text-white text-xl font-light">
   <ng-content />
 </button>

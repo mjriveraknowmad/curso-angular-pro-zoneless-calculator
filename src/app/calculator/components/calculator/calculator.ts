@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, viewChildren } from '@angular/core';
 import { CalculatorButton } from '../calculator-button/calculator-button';
 
 @Component({
@@ -7,12 +7,34 @@ import { CalculatorButton } from '../calculator-button/calculator-button';
   imports: [CalculatorButton],
   templateUrl: './calculator.html',
   host: {
+    '(document:keyup)': 'handleKeyboardEvent($event)',
     class: 'max-w-96 overflow-hidden block',
   },
 })
 export class Calculator {
 
-  handleButtonClick(event: string) {
-    console.log('Button clicked:', event);
+  public calculatorButtons = viewChildren(CalculatorButton);
+
+  handleClick(event: string) {
+    console.log('Button clicked:', {event});
+  }
+
+   handleKeyboardEvent(event: KeyboardEvent) {
+    const keyEquivalents: Record<string, string> = {
+      Escape: 'C',
+      Clear: 'C',
+      X: '*',
+      '/': '÷',
+      Enter: '=',
+    };
+
+    const key = event.key;
+    const keyValue = keyEquivalents[key] ?? key;
+
+    this.handleClick(keyValue);
+
+    this.calculatorButtons().forEach((button) => {
+      button.keyboardPressedStyle(keyValue);
+    });
   }
 }

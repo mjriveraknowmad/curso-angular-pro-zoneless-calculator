@@ -4,6 +4,7 @@ import {
   HostBinding,
   input,
   output,
+  signal,
   viewChild,
 } from '@angular/core';
 
@@ -14,6 +15,11 @@ import {
   styleUrl: './calculator-button.css',
   host: {
     class: 'w-1/4 border-r border-b border-indigo-400',
+    '[class.w-2/4]': 'isDoubleSize()',
+    '[class.w-1/4]': '!isDoubleSize()',
+    '[class.bg-indigo-700]':'isCommand() || isPressed()',
+    '[class.bg-opacity-20]':'isCommand()',
+    '[class.bg-opacity-40]':'isPressed()',
     // attribute: 'hola',
     // 'data-size': 'XL',
   },
@@ -22,6 +28,8 @@ import {
 export class CalculatorButton {
   onClick = output<string>();
   contentValue = viewChild<ElementRef<HTMLButtonElement>>('button');
+
+  public isPressed = signal(false);
 
   public isCommand = input(false, {
     transform: (value: boolean | string) =>
@@ -38,9 +46,9 @@ export class CalculatorButton {
   //   return this.isCommand();
   // }
 
-  @HostBinding('class.w-2/4') get commandStyle() {
-    return this.isDoubleSize();
-  }
+  // @HostBinding('class.w-2/4') get commandStyle() {
+  //   return this.isDoubleSize();
+  // }
 
   handleClick() {
     if(!this.contentValue()?.nativeElement){
@@ -50,6 +58,21 @@ export class CalculatorButton {
     if (value) {
       this.onClick.emit(value);
     }
+  }
+
+  public keyboardPressedStyle(key: string) {
+    if (!this.contentValue()) return;
+
+    const value = this.contentValue()!.nativeElement.innerText;
+
+    if (value !== key) return;
+
+    this.isPressed.set(true);
+    console.log('keyboardPressedStyle', { value, key });
+
+    setTimeout(() => {
+      this.isPressed.set(false);
+    }, 100);
   }
 
 }
