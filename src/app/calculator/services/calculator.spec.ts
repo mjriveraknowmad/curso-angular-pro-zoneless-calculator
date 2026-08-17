@@ -9,6 +9,9 @@ describe('Calculator', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(CalculatorService);
+    // Aquí reseteariamos el vitest.spyOn y los mocks si fuera necesario, para asegurarnos de que cada prueba comience con un estado limpio.
+    // vitest.resetAllMocks();
+    // vitest.clearAllMocks();
   });
 
   it('should be created', () => {
@@ -140,8 +143,10 @@ describe('Calculator', () => {
   });
 
   it('should handle invalid input', () => {
+    vitest.spyOn(console, 'log'); //.mockImplementation(() => {}); // Si implentaramos algo, habría que resetear en el beforeEach o afterEach
     service.constructNumber('A'); // Invalid input
     expect(service.resultText()).toBe('0'); // Should remain unchanged
+    expect(console.log).toHaveBeenCalledWith('Invalid input', 'A');
   });
 
   it('should handle negative zero input correctly', () => {
