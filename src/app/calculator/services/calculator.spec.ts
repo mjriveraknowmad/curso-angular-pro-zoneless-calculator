@@ -87,11 +87,17 @@ describe('Calculator', () => {
   });
 
   it('should handle decimal point correctly', () => {
-    // todo:
+    service.constructNumber('3');
+    service.constructNumber('.');
+    service.constructNumber('1');
+    service.constructNumber('4');
+    expect(service.resultText()).toBe('3.14');
   });
 
   it('should handle decimal point starting with 0', () => {
-    // todo:
+    service.constructNumber('.');
+    service.constructNumber('5');
+    expect(service.resultText()).toBe('0.5');
   });
 
   it('should handle sign change +/-', () => {
