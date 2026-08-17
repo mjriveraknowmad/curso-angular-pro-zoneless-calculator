@@ -145,6 +145,8 @@ describe('Calculator', () => {
   });
 
   it('should handle negative zero input correctly', () => {
-    // todo:
+    service.constructNumber('0');
+    service.constructNumber('+/-');
+    expect(service.resultText()).toBe('0'); // Should remain '0' and not '-0'
   });
 });

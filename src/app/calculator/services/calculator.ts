@@ -87,6 +87,9 @@ export class CalculatorService {
 
     // Cambiar signo
     if (value === '+/-') {
+      if (this.resultText() === '0') {
+        return;
+      }
       if (this.resultText().includes('-')) {
         this.resultText.update((text) => text.slice(1));
         return;
