@@ -54,19 +54,36 @@ describe('Calculator', () => {
   });
 
   it('should calculate result correctly for addition', () => {
-    // todo:
+    service.constructNumber('5');
+    service.constructNumber('+');
+    service.constructNumber('3');
+    service.constructNumber('=');
+    expect(service.resultText()).toBe('8');
   });
 
   it('should calculate result correctly for subtraction', () => {
-    // todo:
+    service.constructNumber('1');
+    service.constructNumber('0');
+    service.constructNumber('-');
+    service.constructNumber('4');
+    service.constructNumber('=');
+    expect(service.resultText()).toBe('6');
   });
 
   it('should calculate result correctly for multiplication', () => {
-    // todo:
+    service.constructNumber('6');
+    service.constructNumber('*');
+    service.constructNumber('7');
+    service.constructNumber('=');
+    expect(service.resultText()).toBe('42');
   });
 
   it('should calculate result correctly for division', () => {
-    // todo:
+    service.constructNumber('8');
+    service.constructNumber('/');
+    service.constructNumber('2');
+    service.constructNumber('=');
+    expect(service.resultText()).toBe('4');
   });
 
   it('should handle decimal point correctly', () => {
