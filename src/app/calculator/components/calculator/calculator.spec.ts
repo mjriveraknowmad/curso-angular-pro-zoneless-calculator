@@ -91,4 +91,48 @@ describe('Calculator', () => {
     expect(mockCalculatorService.constructNumber).toHaveBeenCalledWith('C');
   });
 
+
+
+  it('should handle keyboard events correctly', () => {
+    const event = new KeyboardEvent('keyup', { key: '1' });
+    document.dispatchEvent(event);
+
+    expect(mockCalculatorService.constructNumber).toHaveBeenCalledWith('1');
+  });
+
+  it('should handle special keyboard events (Enter -> =)', () => {
+    const event = new KeyboardEvent('keyup', { key: 'Enter' });
+    document.dispatchEvent(event);
+
+    expect(mockCalculatorService.constructNumber).toHaveBeenCalledWith('=');
+  });
+
+  it('should handle special keyboard events (Escape -> C)', () => {
+    const event = new KeyboardEvent('keyup', { key: 'Escape' });
+    document.dispatchEvent(event);
+
+    expect(mockCalculatorService.constructNumber).toHaveBeenCalledWith('C');
+  });
+
+
+
+  it('should update resultText signal when service updates', () => {
+    mockCalculatorService.resultText.set('999');
+    fixture.detectChanges();
+
+    expect(component.resultText()).toBe('999');
+  });
+
+  it('should have 19 calculator-button components with content projected', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+
+    const buttons = compiled.querySelectorAll('calculator-button');
+
+    expect(buttons.length).toBe(19);
+
+    expect(buttons[0].querySelector('button')?.innerHTML).toContain('C');
+    expect(buttons[1].querySelector('button')?.innerHTML).toContain('+/-');
+    expect(buttons[2].querySelector('button')?.innerHTML).toContain('%');
+    expect(buttons[3].querySelector('button')?.innerHTML).toContain('÷');
+  });
 });
