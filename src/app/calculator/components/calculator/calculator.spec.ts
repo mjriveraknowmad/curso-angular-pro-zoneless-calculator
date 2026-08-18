@@ -71,4 +71,24 @@ describe('Calculator', () => {
     expect(subResultTextElement?.innerHTML).toContain('10 - ');
   });
 
+
+  it('should call constructNumber when handleClick is called', () => {
+    component.handleClick('5');
+    expect(mockCalculatorService.constructNumber).toHaveBeenCalled();
+    expect(mockCalculatorService.constructNumber).toHaveBeenCalledWith('5');
+  });
+
+  it('should call constructNumber when button is clicked', () => {
+    // todo:
+    const buttons = fixture.debugElement.queryAll(
+      By.directive(CalculatorButton)
+    );
+
+    const button = buttons[0];
+    button.triggerEventHandler('onClick', 'C');
+
+    expect(buttons.length).toBe(19);
+    expect(mockCalculatorService.constructNumber).toHaveBeenCalledWith('C');
+  });
+
 });
