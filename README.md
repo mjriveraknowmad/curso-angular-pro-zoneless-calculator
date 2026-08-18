@@ -39,10 +39,22 @@ This will compile your project and store the build artifacts in the `dist/` dire
 
 ## Running unit tests
 
+Instalación coverage de vitest:
+
+```
+npm install @vitest/coverage-v8 --save-dev
+```
+
 To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
 
 ```bash
 ng test
+```
+
+Para comprobar la cobertura:
+
+```bash
+ng test --coverage
 ```
 
 ## Running end-to-end tests
@@ -58,3 +70,5 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
