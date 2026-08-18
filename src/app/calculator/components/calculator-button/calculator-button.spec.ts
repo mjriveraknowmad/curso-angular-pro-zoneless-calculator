@@ -3,6 +3,13 @@ import { Component } from '@angular/core';
 import { CalculatorButton } from './calculator-button';
 
 
+// Mock para la última prueba, donde se comprueba el contenido proyectado. Este componente de prueba sirve como contenedor para el componente CalculatorButton y permite verificar si el contenido proyectado se muestra correctamente.
+@Component({
+  imports: [CalculatorButton],
+  template:'<calculator-button><span class="projected-content"> 7 </span></calculator-button>'
+})
+class HostFakeUseCalculatorButton {}
+
 describe('CalculatorButton', () => {
   let component: CalculatorButton;
   let fixture: ComponentFixture<CalculatorButton>;
@@ -92,4 +99,18 @@ describe('CalculatorButton', () => {
     expect(component.isPressed()).toBe(false);
   });
 
+  it('should display projected content', () => {
+    // @Component({
+    //   imports: [CalculatorButton],
+    //   template:'<calculator-button><span class="projected-content"> 7 </span></calculator-button>'
+    // })
+    // class HostFakeUseCalculatorButton {}
+
+    const hostFixture = TestBed.createComponent(HostFakeUseCalculatorButton);
+    hostFixture.detectChanges();
+
+    const projectedContent = hostFixture.nativeElement.querySelector('.projected-content');
+    expect(projectedContent).toBeTruthy();
+    expect(projectedContent.textContent.trim()).toBe('7');
+  });
 });
