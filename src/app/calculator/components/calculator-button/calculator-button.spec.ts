@@ -47,4 +47,28 @@ describe('CalculatorButton', () => {
   //     expect(divElement?.classList).toContain(className);
   //   });
   // });
+
+  it('should apply w-1/4 double size is false', () => {
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled?.classList.value).toContain('w-1/4');
+  });
+
+  it('should apply w-2/4 double size is true', () => {
+    fixture.componentRef.setInput('isDoubleSize', true);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    console.log('compiled?.classList.value:', compiled?.classList.value);
+    expect(compiled?.classList.value).toContain('w-2/4');
+  });
+
+  it('should apply is-command class when isCommand is true', () => {
+    fixture.componentRef.setInput('isCommand', true);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    console.log('compiled?.classList.value:', compiled?.classList.value);
+    expect(compiled?.classList.value).toContain('bg-indigo-700');
+    expect(compiled?.classList.value).toContain('bg-opacity-20');
+    expect(compiled?.classList.value).toContain('is-command');
+  });
 });

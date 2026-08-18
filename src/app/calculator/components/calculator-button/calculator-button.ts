@@ -42,9 +42,9 @@ export class CalculatorButton {
   });
 
   // Comprobar si es un comando en base a las clases aplicadas al botón
-  // @HostBinding('class.is-command') get commandStyle() {
-  //   return this.isCommand();
-  // }
+  @HostBinding('class.is-command') get commandStyle() {
+    return this.isCommand();
+  }
 
   // @HostBinding('class.w-2/4') get commandStyle() {
   //   return this.isDoubleSize();
